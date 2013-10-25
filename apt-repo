@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]; then
+    REPO='.'
+else
+    REPO=$1
+fi
+
+apt-ftparchive packages $REPO | gzip -c9 > $REPO'/Packages.gz'
+apt-ftparchive sources $REPO | gzip -c9 > $REPO'/Sources.gz'
+
